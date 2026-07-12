@@ -43,8 +43,12 @@ def sample_input_features(key, batch_size, num_features):
     return jax.random.normal(key,(batch_size,num_features))
     pass
 
-# Step 5 - assign_class_labels (not yet solved)
-# TODO: implement
+# Step 5 - assign_class_labels
+def assign_class_labels(inputs, num_classes):
+    # TODO: return an int32 label per row using the first num_classes feature columns.
+    q = jnp.argmax(inputs[:,:num_classes],axis=-1)
+    return jnp.int32(q)
+    pass
 
 # Step 6 - one_hot_encode_labels (not yet solved)
 # TODO: implement
