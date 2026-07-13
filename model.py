@@ -50,8 +50,11 @@ def assign_class_labels(inputs, num_classes):
     return jnp.int32(q)
     pass
 
-# Step 6 - one_hot_encode_labels (not yet solved)
-# TODO: implement
+# Step 6 - one_hot_encode_labels
+def one_hot_encode_labels(labels, num_classes):
+    # TODO: Convert a 1-D array of integer class indices into a 2-D one-hot matrix of shape (batch, num_classes).
+    return jnp.array(labels[:,None]== jnp.arange(num_classes),dtype=jnp.float32)
+    pass
 
 # Step 7 - init_linear_layer (not yet solved)
 # TODO: implement
