@@ -68,8 +68,19 @@ def init_linear_layer(key, in_dim, out_dim, scale=0.1):
     return {'W':weight,'b':bias}
     pass
 
-# Step 8 - init_mlp_params (not yet solved)
-# TODO: implement
+# Step 8 - init_mlp_params
+def init_mlp_params(key, layer_sizes, scale=0.1):
+    # TODO: build a list of per-layer parameter dicts from adjacent layer sizes.
+    num_layers = len(layer_sizes) - 1
+    
+    keys = jax.random.split(key, num_layers)
+    
+    params = []
+    for k, in_dim, out_dim in zip(keys, layer_sizes[:-1], layer_sizes[1:]):
+        layer_params = init_linear_layer(k, in_dim, out_dim, scale=scale)
+        params.append(layer_params)
+        
+    return params
 
 # Step 9 - linear_forward (not yet solved)
 # TODO: implement
